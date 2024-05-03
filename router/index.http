@@ -1,0 +1,32 @@
+POST http://localhost:3000/api/ingresos/semanas/ HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "monto": 873,
+    "fechaInicioSemana":"04-29-2024",
+    "fechaFinalSemana":"05-02-2024",
+    "cantHorasTrabajadas": 40
+    }
+
+###
+
+DELETE http://localhost:3000/api/ingresos/semanas/663155a2994a0fccd162b359 HTTP/1.1
+Content-Type: application/json
+
+###
+POST http://localhost:3000/api/ingresos/semanas HTTP/1.1
+Content-Type: application/json
+
+{ 
+    "id": 3
+    }
+###
+PUT http://localhost:3000/api/ingresos/semanas/663161a64199056a340090d6 HTTP/1.1
+Content-Type: application/json
+
+{  
+    "monto": 873,
+    "fechaInicioSemana":"04-29-2024",
+    "fechaFinalSemana":"05-02-2024",
+    "cantHorasTrabajadas": 30
+    }
