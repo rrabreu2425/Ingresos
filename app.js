@@ -26,7 +26,7 @@ app.use('/api/ingresos/semanas', routerSemanas);
 
 
 app.get('/api', (req, res)=>{
-res.send('Bienvenidos a la pagina de Ingresossss');
+res.send('Bienvenidos a la pagina de Ingresos');
 });
 
 
