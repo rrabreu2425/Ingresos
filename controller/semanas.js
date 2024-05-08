@@ -1,11 +1,11 @@
 const schemaSemanas = require('../model/semanas');
 const controller = {}
 
-//al data collection Semana
+//all data collection Semana
 controller.allDataSemanas = async (req, res) => {
     try {
         const datos = await schemaSemanas.find()
-        res.send(datos);
+        res.render('semanas',{datos});
     }
     catch (err) {
         console.log(err);

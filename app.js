@@ -22,11 +22,13 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api/ingresos/semanas', routerSemanas);
 
+app.set('view engine', 'ejs')
+//app.set('view', './views')
 
 
 
 app.get('/api', (req, res)=>{
-res.send('Welcome to the page Incoms');
+res.render('index');
 });
 
 
