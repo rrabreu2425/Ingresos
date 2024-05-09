@@ -19,13 +19,17 @@
           </tr>
         </thead>
         <tbody>
+            <% for (let i = 0; i < datos.length; i++) {%>
           <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            
+            <th scope="row"><%=i %></th>
+            <td><%=datos[i].monto%></td>
+            <td><%=datos[i].fechaInicioSemana%></td>
+            <td><%=datos[i].fechaFinalSemana%></td>
+            <td><%=datos[i].cantHorasTrabajadas%></td>
+           
           </tr>
+          <% } %>
          </tbody>
       </table>
 </body>
