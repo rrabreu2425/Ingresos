@@ -7,6 +7,7 @@ const app = express();
 app.use('/api/ingresos/semanas', routerSemanas);
 
 routerSemanas.get('/', controller.allDataSemanas)
+routerSemanas.get('/calcdecuento/:id', controller.calDescuento)
 
 routerSemanas.post('/', controller.newSemana)
 routerSemanas.delete('/:idSemana', controller.deleteSemana)
