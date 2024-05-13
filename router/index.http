@@ -30,3 +30,5 @@ Content-Type: application/json
     "fechaFinalSemana":"05-02-2024",
     "cantHorasTrabajadas": 30
     }
+###
+GET http://localhost:3000/api/ingresos/semanas/calcdescuento/66304a1aefb5b6e5e1be3a4c

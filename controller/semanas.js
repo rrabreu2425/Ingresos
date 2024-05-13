@@ -14,10 +14,15 @@ controller.allDataSemanas = async (req, res) => {
 
 // add new semana ingresos
 controller.newSemana = async (req, res) => {
-    const body = req.body;
-    await schemaSemanas.create(body);
-    console.log(body);
+    try{
+        const datos= req.body
+        await schemaSemanas.create(datos);
+        res.redirect('/api/ingresos/semanas/')
 
+    }
+    catch(err){
+   console.log(err)
+    }
 }
 
 //calc descuento semana
@@ -25,8 +30,9 @@ controller.newSemana = async (req, res) => {
 controller.calDescuento= async(req, res)=>{
     try{
         const id= req.params.id
-        const semana= await schemaSemanas.find(id)
-        console.log(semana)
+        const semana= await schemaSemanas.find({_id:id})
+        const descuento = semana[0].cantHorasTrabajadas
+        console.log((semana[0].cantHorasTrabajadas*25)-semana[0].monto)
     }
     catch(err){
         console.log(err)
