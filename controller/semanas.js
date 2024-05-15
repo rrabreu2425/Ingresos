@@ -12,6 +12,23 @@ controller.allDataSemanas = async (req, res) => {
     }
 }
 
+//
+
+controller.addSemanaGet = (req, res)=>{
+res.render('addSemana')
+}
+//
+controller.deleteSemanaGet= async(req, res)=>{
+    try{
+        const datos = await schemaSemanas.find()
+  res.render('deleteSemana', {datos})
+    }
+catch(err){
+console.log(err)
+}
+
+}
+
 // add new semana ingresos
 controller.newSemana = async (req, res) => {
     try{
