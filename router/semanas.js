@@ -19,7 +19,7 @@ routerSemanas.use(bodyParser.json())
 
 routerSemanas.post('/', controller.newSemana)
 
-routerSemanas.delete('/:idSemana', controller.deleteSemana)
+routerSemanas.post('/delete', controller.deleteSemana)
 
 routerSemanas.put('/:id', controller.updateSemana)
 

@@ -1,1 +1,13 @@
 <%-include('layout/layout')%>
+<form method="post" action="http://localhost:3000/api/ingresos/semanas/delete">
+    <div class="mb-3">
+        <h1>Seleccione la semana a Eliminar</h1>
+      <label for="exampleInputFechaInicioSemana" class="form-label">Fechas Inicio de Semana</label>
+      <input type="date" class="form-control" id="FechaInicioSemana" name="FechaInicioSemana" aria-describedby="FechaInicioSemana">
+      </div>
+    <div class="mb-3">
+      <label for="exampleInputFechaFinalSemana" class="form-label">Fecha Final de Semana</label>
+      <input type="date" class="form-control" id="FechaFinalSemana"name="FechaFinalSemana">
+    </div>
+    <button type="submit" class="btn btn-primary">Eliminar</button>
+  </form>
