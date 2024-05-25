@@ -5,7 +5,7 @@ const controller = {}
 controller.allDataSemanas = async (req, res) => {
     try {
         const datos = await schemaSemanas.find()
-        //return console.log(datos[0].fechaFinalSemana)
+     //return console.log(typeof datos[0].fechaFinalSemana)
         res.render('allSemanas',{datos});
     }
     catch (err) {
@@ -21,7 +21,7 @@ res.render('addSemana')
 //
 controller.deleteSemanaGet= async(req, res)=>{
     try{
-        const datos = await schemaSemanas.find()
+ //const datos = await schemaSemanas.find()
   res.render('deleteSemana')
     }
 catch(err){
@@ -61,16 +61,16 @@ controller.calDescuento= async(req, res)=>{
 //delete Elemento
 controller.deleteSemana = async (req, res) => {
       try {
-            const fechas= req.body
+        const fechas= req.body
         const objectFechaInicio= new Date(fechas.FechaInicioSemana)
         const objectFechaFinal= new Date(fechas.FechaFinalSemana)
-        const datos = await schemaSemanas.find()
-        console.log(objectFechaInicio)//==datos[0].fechaInicioSemana)
-        console.log(datos[0].fechaFinalSemana)
+        //console.log(objectFechaInicio)
+        //const datos = await schemaSemanas.find()
         await schemaSemanas.deleteOne({
             fechaInicioSemana: objectFechaInicio,
             fechaFinalSemana: objectFechaFinal
         })
+        res.redirect('/api/ingresos/semanas/')
     }
     catch (err) {
         console.log(err)

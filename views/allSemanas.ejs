@@ -11,13 +11,17 @@
         </thead>
         <tbody>
             <% for (let i = 0; i < datos.length; i++) {%>
+              <% datos[i].fechaInicioSemana.setMinutes(datos[i].fechaInicioSemana.getMinutes() + datos[i].fechaInicioSemana.getTimezoneOffset()) %>
+              <% datos[i].fechaFinalSemana.setMinutes(datos[i].fechaFinalSemana.getMinutes() + datos[i].fechaFinalSemana.getTimezoneOffset()) %>
+              <% const usaFechaInicioSemana = new Intl.DateTimeFormat('en-US').format(datos[i].fechaInicioSemana) %>
+              <% const usaFechaFinalSemana= new Intl.DateTimeFormat('en-US').format(datos[i].fechaFinalSemana)%>
           <tr>
             
-            <th scope="row"><%=i %></th>
-            <td><%=datos[i].monto%></td>
-            <td><%=datos[i].fechaInicioSemana%></td>
-            <td><%=datos[i].fechaFinalSemana%></td>
-            <td><%=datos[i].cantHorasTrabajadas%></td>
+            <th scope="row"><%=i+1%></th>
+            <td><%-datos[i].monto%></td>
+            <td><%-usaFechaInicioSemana%></td>
+            <td><%-usaFechaFinalSemana%></td>
+            <td><%-datos[i].cantHorasTrabajadas%></td>
            
           </tr>
           <% } %>
