@@ -21,12 +21,22 @@ res.render('addSemana')
 //
 controller.deleteSemanaGet= async(req, res)=>{
     try{
- //const datos = await schemaSemanas.find()
-  res.render('deleteSemana')
+   res.render('deleteSemana')
     }
 catch(err){
 console.log(err)
 }
+
+}
+
+//
+controller.descuentoGet= async(req, res)=>{
+    try{
+  res.render('descuento')
+    }
+    catch(err){
+  console.log(err)
+    }
 
 }
 
@@ -44,19 +54,27 @@ controller.newSemana = async (req, res) => {
 }
 
 //calc descuento semana
-
-controller.calDescuento= async(req, res)=>{
+controller.descuento= async(req, res)=>{
     try{
-        const id= req.params.id
-        const semana= await schemaSemanas.find({_id:id})
-        const descuento = semana[0].cantHorasTrabajadas
-        console.log((semana[0].cantHorasTrabajadas*25)-semana[0].monto)
+        const fechas= req.body
+        const objectFechaInicio= new Date(fechas.FechaInicioSemana)
+        const objectFechaFinal= new Date(fechas.FechaFinalSemana)
+        const semana= await schemaSemanas.find({
+          fechaInicioSemana: objectFechaInicio,
+         fechaFinalSemana: objectFechaFinal
+        })
+       if(semana.lenth=!0){
+        const descuento = (semana[0].cantHorasTrabajadas*26)-semana[0].monto
+         console.log(fechas)
+       
+        res.render('infoDescuento', {descuento, fechas})
+       }
+        
+       
     }
     catch(err){
         console.log(err)
     }
-    
-
 }
 //delete Elemento
 controller.deleteSemana = async (req, res) => {
@@ -89,4 +107,4 @@ console.log(err)
     }
 
 }
-module.exports = controller;
+module.exports =controller
