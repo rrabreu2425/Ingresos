@@ -17,6 +17,7 @@ const routerSemanas=require('./router/semanas');
 
 app.use('/api/ingresos/semanas', routerSemanas);
 app.set('view engine', 'ejs');
+
 app.get('/api', (req, res)=>{
 res.render('index')
 });
