@@ -10,11 +10,11 @@ const app = express();
 app.use('/api/ingresos/semanas', routerSemanas);
 routerSemanas.use(bodyParser.urlencoded({extended: false}))
 routerSemanas.use(bodyParser.json())
-routerSemanas.get('/', controller.allDataSemanas)
+routerSemanas.get('/all', controller.allDataSemanas)
 routerSemanas.get('/addSemana',controller.addSemanaGet)
 routerSemanas.get('/delete',controller.deleteSemanaGet)
 routerSemanas.get('/descuento',controller.descuentoGet)
-
+routerSemanas.get('/home', controller.getHome);
 
 
 

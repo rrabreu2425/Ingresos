@@ -4,24 +4,39 @@ const controller = {}
 //all data collection Semana
 controller.allDataSemanas = async (req, res) => {
     try {
-        const datos = await schemaSemanas.find()
-     //return console.log(typeof datos[0].fechaFinalSemana)
-        res.render('allSemanas',{datos});
+        if(req.isAuthenticated()){
+            const datos = await schemaSemanas.find()
+            const user = req.user
+            res.render('allSemanas',{datos, user});
+        }
+        res.render('login', {user: req.user})
+
+
     }
     catch (err) {
         console.log(err);
     }
 }
+//
+controller.getHome=(req, res)=>{
+    if(req.isAuthenticated())
+        return res.render('index', {user:req.user})
+    res.render('login', {user: req.user})
+    }
 
 //
 
 controller.addSemanaGet = (req, res)=>{
-res.render('addSemana')
+    if(req.isAuthenticated())
+res.render('addSemana', {user: req.user})
+    res.render('login', {user: req.user})
 }
 //
 controller.deleteSemanaGet= async(req, res)=>{
     try{
-   res.render('deleteSemana')
+    if(req.isAuthenticated())
+        res.render('deleteSemana', {user:req.user})
+   res.render('login', {user: req.user})
     }
 catch(err){
 console.log(err)
@@ -32,7 +47,9 @@ console.log(err)
 //
 controller.descuentoGet= async(req, res)=>{
     try{
-  res.render('descuento')
+        if(req.isAuthenticated())
+            res.render('descuento', {user: req.user})
+        res.render('login', {user: req.user})
     }
     catch(err){
   console.log(err)
@@ -45,7 +62,7 @@ controller.newSemana = async (req, res) => {
     try{
         const datos= req.body
         await schemaSemanas.create(datos);
-        res.redirect('/api/ingresos/semanas/')
+        res.redirect('/api/ingresos/semanas/', {user: req.user})
 
     }
     catch(err){
@@ -65,9 +82,8 @@ controller.descuento= async(req, res)=>{
         })
        if(semana.lenth=!0){
         const descuento = (semana[0].cantHorasTrabajadas*26)-semana[0].monto
-         console.log(fechas)
-       
-        res.render('infoDescuento', {descuento, fechas})
+        const user= req.user
+       res.render('infoDescuento', {descuento, fechas, user})
        }
         
        

@@ -1,0 +1,16 @@
+<%-include('layout/layout')%>
+<div class="container">
+    <form method="post" action="/api/ingresos/login">
+      <div class="mb-3">
+        <input type="email" class="form-control" id="username" name="username" placeholder="Email">
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    
+  </div> 
+  <%if(signInMessage){%>
+    <a class="link-danger"><%=signInMessage%></a>
+  <% } %>
+  </body>
+  </html>

@@ -7,8 +7,7 @@ const DB_URL=`mongodb+srv://${user}:${pasw}@cluster0.asqcvgv.mongodb.net/${db}?r
 module.exports=()=>{
 
     const conexion=()=>{
-        //mongoose.connect(DB_URL);
-        mongoose.connect(DB_URL)
+         mongoose.connect(DB_URL)
         .then(()=>console.log('Conexion BD'))
         .catch((err)=>console.log(err));
               

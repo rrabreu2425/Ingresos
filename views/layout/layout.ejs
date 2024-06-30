@@ -12,21 +12,33 @@
         <div class="container-fluid">
          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+             <%if(!user){%>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://localhost:3000/api">Home</a>
+                <a class="nav-link active" aria-current="page" href="/api/ingresos/login">Signin</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/api/ingresos/semanas">Mostrar Todos Ingresos</a>
+                <a class="nav-link active" aria-current="page" href="/api/ingresos/signup">SignUp</a>
+              </li>
+              <%}else{%>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/api/ingresos/semanas/home">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/api/ingresos/semanas/addSemana">Adicionar Ingreso</a>
+                <a class="nav-link" href="/api/ingresos/semanas/all">Mostrar Todos Ingresos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/api/ingresos/semanas/delete">Eliminar</a>
+                <a class="nav-link" href="/api/ingresos/semanas/addSemana">Adicionar Ingreso</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/api/ingresos/semanas/descuento">Calcular Descuento</a>
+                <a class="nav-link" href="/api/ingresos/semanas/delete">Eliminar</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/api/ingresos/semanas/descuento">Calcular Descuento</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/api/ingresos/logout">Logout</a>
+              </li>
+              <%}%>
             </ul>
           </div>
         </div>
