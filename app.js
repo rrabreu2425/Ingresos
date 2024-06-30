@@ -27,7 +27,7 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 app.use((req, res, next)=>{
-   // app.locals.signUpMessage= req.flash('signUpMessage')
+    app.locals.signUpMessage= req.flash('signUpMessage')
     //app.locals.userCreated= req.flash('userCreated')
     app.locals.signInMessage= req.flash('signInMessage')
     next()

@@ -28,3 +28,24 @@ if(!matchPassword){
 }
 return  done(null, oneUser)
 }))
+
+
+passport.use('local-signUp', new LocalStrategy({
+    usernameField: 'username',
+    passwordField: 'password',
+    passReqToCallback: true
+}, async (req, username, password,done)=>{
+const exist= await User.findOne({username: username})
+if(exist){
+return done(false, null, req.flash('signUpMessage','Already exist user'))
+}
+if(username==null || password==null){
+    return done(false, null, req.flash('signUpMessage','Empty field') )
+}
+const newUser= new User()
+newUser.username= username
+newUser.password= await newUser.encriptPassword(password)
+await newUser.save()
+return done(false, newUser)
+
+}))

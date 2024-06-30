@@ -1,0 +1,20 @@
+<%-include('layout/layout')%>
+<div class="container">
+    <form method="post" action="/api/ingresos/signup">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" id="username" name="username" placeholder="Email">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
+        </div>
+      <button type="submit" class="btn btn-primary">SigUp</button>
+    </form>
+    
+  </div> 
+  <%if(signUpMessage){%>
+    <a class="link-danger"><%=signUpMessage%></a>
+  <% } %>
+  </body>
+  </html>
