@@ -4,40 +4,29 @@ const controller = {}
 //all data collection Semana
 controller.allDataSemanas = async (req, res) => {
     try {
-        if(req.isAuthenticated()){
-            const datos = await schemaSemanas.find()
+           const datos = await schemaSemanas.find()
             const user = req.user
             res.render('allSemanas',{datos, user});
-        }
-        res.render('login', {user: req.user})
-
-
-    }
-    catch (err) {
+     }
+        catch (err) {
         console.log(err);
     }
 }
 //
 controller.getHome=(req, res)=>{
-    if(req.isAuthenticated())
         return res.render('index', {user:req.user})
-    res.render('login', {user: req.user})
     }
 
 //
 
 controller.addSemanaGet = (req, res)=>{
-    if(req.isAuthenticated())
-res.render('addSemana', {user: req.user})
-    res.render('login', {user: req.user})
-}
+  res.render('addSemana', {user: req.user})
+  }
 //
 controller.deleteSemanaGet= async(req, res)=>{
     try{
-    if(req.isAuthenticated())
         res.render('deleteSemana', {user:req.user})
-   res.render('login', {user: req.user})
-    }
+      }
 catch(err){
 console.log(err)
 }
@@ -47,10 +36,8 @@ console.log(err)
 //
 controller.descuentoGet= async(req, res)=>{
     try{
-        if(req.isAuthenticated())
-            res.render('descuento', {user: req.user})
-        res.render('login', {user: req.user})
-    }
+         res.render('descuento', {user: req.user})
+           }
     catch(err){
   console.log(err)
     }
@@ -98,8 +85,6 @@ controller.deleteSemana = async (req, res) => {
         const fechas= req.body
         const objectFechaInicio= new Date(fechas.FechaInicioSemana)
         const objectFechaFinal= new Date(fechas.FechaFinalSemana)
-        //console.log(objectFechaInicio)
-        //const datos = await schemaSemanas.find()
         await schemaSemanas.deleteOne({
             fechaInicioSemana: objectFechaInicio,
             fechaFinalSemana: objectFechaFinal
