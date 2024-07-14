@@ -9,8 +9,8 @@
     </form>
     
   </div> 
-  <%if(signInMessage){%>
-    <a class="link-danger"><%=signInMessage%></a>
+  <%if(signInMessage.length>0){%>
+    <div class="alert alert-danger" role="alert"><%=signInMessage%></div>
   <% } %>
   </body>
   </html>

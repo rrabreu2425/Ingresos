@@ -9,9 +9,10 @@ const bodyParser = require('body-parser');
 const app = express();
 
 app.use('/api/ingresos/semanas', routerSemanas);
+
 routerSemanas.use((req, res, next)=>{
     if(req.isAuthenticated()){
-        next()
+       return next()
     }else{
         res.render('login', {user: req.user})
     }        

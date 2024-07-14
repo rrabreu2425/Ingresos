@@ -20,6 +20,7 @@ controller.getHome=(req, res)=>{
 //
 
 controller.addSemanaGet = (req, res)=>{
+  
   res.render('addSemana', {user: req.user})
   }
 //
@@ -47,9 +48,16 @@ controller.descuentoGet= async(req, res)=>{
 // add new semana ingresos
 controller.newSemana = async (req, res) => {
     try{
-        const datos= req.body
-        await schemaSemanas.create(datos);
-        res.redirect('/api/ingresos/semanas/', {user: req.user})
+        const newWeek= new schemaSemanas ({
+            monto: req.body.monto,
+            fechaInicioSemana: req.body.fechaFinalSemana,
+            fechaFinalSemana: req.body.fechaFinalSemana,
+            cantHorasTrabajadas: req.body.cantHorasTrabajadas,
+            userId: req.user._id
+        })
+        await schemaSemanas.create(newWeek);
+        const datos = await schemaSemanas.find()
+        res.render('allSemanas', {datos, user: req.user})
 
     }
     catch(err){

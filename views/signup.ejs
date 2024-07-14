@@ -13,8 +13,8 @@
     </form>
     
   </div> 
-  <%if(signUpMessage){%>
-    <a class="link-danger"><%=signUpMessage%></a>
+  <%if(signUpMessage.length>0){%>
+    <div class="alert alert-danger" role="alert"><%=signUpMessage%></div>
   <% } %>
   </body>
   </html>
