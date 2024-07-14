@@ -4,7 +4,7 @@ const controller = {}
 //all data collection Semana
 controller.allDataSemanas = async (req, res) => {
     try {
-           const datos = await schemaSemanas.find()
+           const datos = await schemaSemanas.find({userId:req.user._id})
             const user = req.user
             res.render('allSemanas',{datos, user});
      }
@@ -56,7 +56,7 @@ controller.newSemana = async (req, res) => {
             userId: req.user._id
         })
         await schemaSemanas.create(newWeek);
-        const datos = await schemaSemanas.find()
+        const datos = await schemaSemanas.find({userId:req.user._id})
         res.render('allSemanas', {datos, user: req.user})
 
     }
@@ -95,9 +95,12 @@ controller.deleteSemana = async (req, res) => {
         const objectFechaFinal= new Date(fechas.FechaFinalSemana)
         await schemaSemanas.deleteOne({
             fechaInicioSemana: objectFechaInicio,
-            fechaFinalSemana: objectFechaFinal
+            fechaFinalSemana: objectFechaFinal,
+            userId:req.user._id
         })
-        res.redirect('/api/ingresos/semanas/')
+        const datos = await schemaSemanas.find({userId:req.user._id})
+        console.log('prueba')
+        res.render('allSemanas', {user: req.user, datos})
     }
     catch (err) {
         console.log(err)
