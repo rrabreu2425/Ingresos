@@ -1,0 +1,12 @@
+.container{
+    width: 500px;
+    min-height: 40px;
+    margin: 50px 380px;
+    padding: 8px 15px 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  
+    cursor: pointer;
+}
