@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/signIn.css'
+import '../css/style.css'
 import Input from '../components/input';
 import Label from "../components/label";
 import Button from "../components/button";

@@ -1,12 +1,19 @@
 .container{
     width: 500px;
-    min-height: 40px;
+    min-height: 160px;
     margin: 50px 380px;
     padding: 8px 15px 8px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-  
-  
     cursor: pointer;
 }
+.table{
+    width: 80%;
+    margin: 80px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
