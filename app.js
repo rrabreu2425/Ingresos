@@ -7,6 +7,7 @@ const routerSemanas=require('./router/semanas')
 const userRouter=require('./router/login')
 const passport= require('passport')
 const flash=require('connect-flash')
+const cors =require('cors') 
 require('./config/passport')
 
 const app= express();
@@ -16,6 +17,7 @@ app.set('view engine', 'ejs')
 
 
 //midelware
+app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSesion({

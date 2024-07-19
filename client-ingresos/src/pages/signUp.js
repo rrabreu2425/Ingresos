@@ -1,30 +1,38 @@
 import React from "react";
 import '../css/style.css'
 import Label from "../components/label";
-import Input from "../components/input";
 import Button from "../components/button";
-function signUp() {
+import {useForm} from 'react-hook-form'
+import {signUpRequest} from '../api/userAunt'
+function SignUp() {
+    const {register, handleSubmit}= useForm()
     return (
         <div className='container'>
-            <form method="post" action=''>
-                <div class="mb-3">
+            <form onSubmit={handleSubmit(async(values)=>{
+                 const res=await signUpRequest(values)
+                 console.log(res)
+            })}>
+                <div className="mb-3">
                     <Label title='Email' />
-                    <Input id='email'
-                        name='email'
-                        placeholder='Email'
-                        type='Email' />
+                    <input type='Email' 
+                           className="form-control" 
+                          placeholder='Email'
+                          {...register('username', {required: true})}
+                          />
+                         
+
                     <Label title='Password' />
-                    <Input
-                        id='password'
-                        name='password'
-                        placeholder='Password'
-                        type='password' />
+                    <input type='Password' 
+                           className="form-control" 
+                          placeholder='Password'
+                          {...register('password', {required: true})}
+                          />
                     <Label title='Confirm Password' />
-                    <Input
-                        id='password2'
-                        name='password2'
-                        placeholder='Confirm Password'
-                        type='password' />
+                    <input type='Password' 
+                           className="form-control" 
+                          placeholder='Confirm your Password'
+                          {...register('password2', {required: true})}
+                          />
                 </div>
                 <Button
                     type='submit'
@@ -33,4 +41,4 @@ function signUp() {
         </div>
     )
 }
-export default signUp
+export default SignUp

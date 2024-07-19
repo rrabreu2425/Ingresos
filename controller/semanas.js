@@ -6,7 +6,8 @@ controller.allDataSemanas = async (req, res) => {
     try {
         const datos = await schemaSemanas.find({ userId: req.user._id })
         const user = req.user
-        res.render('allSemanas', { datos, user });
+        //res.render('allSemanas', { datos, user });
+        res.send(datos)
     }
     catch (err) {
         console.log(err);
