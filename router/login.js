@@ -1,7 +1,7 @@
 const express= require('express')
-const controller= require('../controller/user')
+const controller= require('../controller/user.js')
 
-const validateSchema=require('../midelware/validatorMidelware.js')
+
 const userRouter= express.Router()
 
 
@@ -11,11 +11,16 @@ app.use('/api/ingresos/', userRouter)
 
 
 userRouter.get('/login', (req, res)=>{
-res.render('login', {user: req.user})
+   res.render('login', {user: req.user})
 })
 userRouter.get('/signup', controller.getLogin)
-userRouter.post('/login',controller.postLogin)
-userRouter.post('/signup',controller.postSignUp)
+userRouter.get('/sendUser', controller.sendUserApi)
+userRouter.post('/login',controller.postLogin, (req, res)=>{
+    res.send(req.user)
+})
+userRouter.post('/signup',controller.postSignUp, (req, res)=>{
+    res.send(req.user)
+})
 userRouter.get('/logout', controller.getLogOut)
 
 module.exports= userRouter

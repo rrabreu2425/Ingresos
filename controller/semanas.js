@@ -15,7 +15,7 @@ controller.allDataSemanas = async (req, res) => {
 }
 //
 controller.getHome = (req, res) => {
-    return res.render('index', { user: req.user })
+     return res.render('index', { user: req.user })
 }
 
 //

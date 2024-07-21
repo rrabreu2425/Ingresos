@@ -1,41 +1,38 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form"
 import '../css/style.css'
-import Input from '../components/input';
 import Label from "../components/label";
 import Button from "../components/button";
-import { useState } from "react";
-
+import {useForm} from 'react-hook-form'
+import {signInRequest} from '../api/userAunt'
 function SignIn() {
-
-   return (
+  const {register, handleSubmit}= useForm()
+  return (
     <div className="container">
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(async(value)=>{
+        //return console.log(value)
+         const resp= await signInRequest(value)
+         console.log(resp)
+      })}>
         <div className="mb-3">
           <Label
             title='Email' />
-          <Input
-            id='username'
-            name='username'
-            placeholder='Username'
-            onChange={handleChange}
-            type='email' 
-            />
+          <input type='Email'
+            className="form-control"
+            placeholder='Email'
+            {...register('username', { required: true })}
+          />
           <Label
             title='Password' />
-          <Input
-            id='password'
-            name='password'
+          <input type='Password'
+            className="form-control"
             placeholder='Password'
-         
-            onChange={handleChange}
-            type='password' 
-            />
+            {...register('password', { required: true })}
+          />
         </div>
         <Button
           type='submit'
-          name='Login' />
+          name='SignIn' />
       </form>
 
     </div>

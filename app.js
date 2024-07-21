@@ -3,7 +3,7 @@ const expressSesion= require('express-session')
 const dotenv = require('dotenv');
 const bodyParser= require('body-parser');
 const initConexion= require('./data/db');
-const routerSemanas=require('./router/semanas')
+const routerSemanas=require('./router/semana')
 const userRouter=require('./router/login')
 const passport= require('passport')
 const flash=require('connect-flash')
@@ -17,7 +17,9 @@ app.set('view engine', 'ejs')
 
 
 //midelware
-app.use(cors())
+app.use(cors({
+    origin:'http://localhost:3000'
+}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(expressSesion({

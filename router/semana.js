@@ -1,16 +1,13 @@
 const express = require('express');
-const controller = require('../controller/semanas');
-const schemaSemanas = require('../model/semanas');
+const controller = require('../controller/semanas.js');
+
 const routerSemanas = express.Router()
-
-const { default: mongoose } = require('mongoose');
 const bodyParser = require('body-parser');
-
 const app = express();
 
 app.use('/api/ingresos/semanas', routerSemanas);
 
-routerSemanas.use((req, res, next)=>{
+ routerSemanas.use((req, res, next)=>{
     if(req.isAuthenticated()){
        return next()
     }else{
@@ -18,12 +15,9 @@ routerSemanas.use((req, res, next)=>{
     }        
     
 })
-routerSemanas.use(bodyParser.urlencoded({extended: false}))
-routerSemanas.use(bodyParser.json())
-
 
 routerSemanas.get('/all', controller.allDataSemanas)
-routerSemanas.get('/addSemana',controller.addSemanaGet)
+routerSemanas.get('/addSemana', controller.addSemanaGet)
 routerSemanas.get('/delete',controller.deleteSemanaGet)
 routerSemanas.get('/descuento',controller.descuentoGet)
 routerSemanas.get('/home', controller.getHome);
