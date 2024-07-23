@@ -11,12 +11,13 @@ app.use('/api/ingresos/', userRouter)
 
 
 userRouter.get('/login', (req, res)=>{
-   res.render('login', {user: req.user})
+   res.send(req.user)
 })
 userRouter.get('/signup', controller.getLogin)
 userRouter.get('/sendUser', controller.sendUserApi)
 userRouter.post('/login',controller.postLogin, (req, res)=>{
-    res.send(req.user)
+    const user= req.user
+    res.send(user)    
 })
 userRouter.post('/signup',controller.postSignUp, (req, res)=>{
     res.send(req.user)

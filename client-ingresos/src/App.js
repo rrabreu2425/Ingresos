@@ -7,26 +7,29 @@ import AddWeek from './pages/addWeek';
 import AllWeek from './pages/allWeek';
 import Layout from './pages/layout';
 import Home from './pages/home';
+import { AuthProvider } from './context/userContext'
 function App() {
   return (
     <div className="App">
       <div className='Header'>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="signUp" element={<SignUp />} />
-          <Route path="signIn" element={<SignIn />} />
-          <Route path="allIngresos" element={<AllWeek />} />
-          <Route path="addIngresos" element={<AddWeek />} />
-         </Route>
-      </Routes>
-    </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="signUp" element={<SignUp />} />
+                <Route path="signIn" element={<SignIn />} />
+                <Route path="allIngresos" element={<AllWeek />} />
+                <Route path="addIngresos" element={<AddWeek />} />
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </AuthProvider>
       </div>
       <div className='principal-container'>
-         
+
       </div>
-  
+
     </div>
   );
 }

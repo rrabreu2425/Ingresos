@@ -8,8 +8,8 @@ controller.getLogin= (req, res)=>{
     res.render('signup', {user: req.user})
     }
 
-controller.postLogin= passport.authenticate('local-signIn')
-controller.postSignUp= passport.authenticate('local-signUp')
+controller.postLogin= passport.authenticate('local-signIn', { failureRedirect: '/api/ingresos/login' })
+controller.postSignUp= passport.authenticate('local-signUp', { failureRedirect: '/api/ingresos/login' })
 
 controller.sendUserApi= (req, res)=>{
      return console.log(req.user)
