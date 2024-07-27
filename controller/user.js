@@ -19,6 +19,7 @@ controller.sendUserApi= (req, res)=>{
 }
 
 controller.getLogOut= function(req, res, next){
+    
     req.logout(function(err){
      if(err)
          return next(err)

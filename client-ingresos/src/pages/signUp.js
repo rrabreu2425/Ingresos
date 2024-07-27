@@ -4,14 +4,14 @@ import Label from "../components/label";
 import Button from "../components/button";
 import { useForm } from 'react-hook-form'
 import { signUpRequest } from '../api/userAunt'
-import {useAuth} from '../context/userContext'
+//import {useAuth} from '../context/userContext'
 
 function SignUp() {
 
     const { register, handleSubmit } = useForm()
-    const {signUp}= useAuth()
     const onSubmit = handleSubmit(async (values) => {
-      signUp(values)
+        const res = await signUpRequest(values)
+        console.log(res)
     })
     return (
         <div className='container'>

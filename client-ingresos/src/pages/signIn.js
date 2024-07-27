@@ -5,14 +5,29 @@ import Button from "../components/button";
 import {useForm} from 'react-hook-form'
 import {signInRequest} from '../api/userAunt'
 import { useNavigate } from "react-router-dom";
+
+
 function SignIn() {
+
   const {register, handleSubmit}= useForm()
   const navigate= useNavigate()
+
+
   const onSubmit= handleSubmit(async(value)=>{
     const resp= await signInRequest(value)
-    navigate('/')
-    console.log(resp.data)
+    if(resp.data!==''){
+      window.localStorage.setItem('username', resp.data.username)
+      window.localStorage.setItem('id', resp.data._id)
+      window.localStorage.setItem('isLoged', true)
+      navigate('/home')
+    }  
+    else{
+      window.localStorage.setItem('isLoged', false)
+      navigate('/signIn')
+    } 
  })
+
+
   return (
     <div className="container">
 
