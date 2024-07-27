@@ -6,9 +6,9 @@ import Button from "../components/button"
 function AddWeek() {
     return (
 
-        <div className='container'>
+        <div className="container">
             <h5>Adicionar Nuevo Ingreso</h5>
-            <form method="post" action=''>
+            <form>
                 <Label
                     title='Monto' />
                 <Input
