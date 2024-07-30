@@ -1,7 +1,11 @@
 import React from "react";
+import{allWeekRequest} from'../api/semana'
 
 import '../css/style.css'
 function AllWeek(){
+  const user = window.localStorage.getItem('data')
+  const allWeek=allWeekRequest()
+  console.log(user)
     return(
         <div className='table'>
         <table className="table table-dark table-striped">

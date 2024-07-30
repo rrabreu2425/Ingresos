@@ -14,11 +14,14 @@ function SignIn() {
 
 
   const onSubmit= handleSubmit(async(value)=>{
+    //console.log(value)
     const resp= await signInRequest(value)
+    //console.log(resp)
     if(resp.data!==''){
       window.localStorage.setItem('username', resp.data.username)
       window.localStorage.setItem('id', resp.data._id)
       window.localStorage.setItem('isLoged', true)
+      window.localStorage.setItem('data', resp.data)
       navigate('/home')
     }  
     else{

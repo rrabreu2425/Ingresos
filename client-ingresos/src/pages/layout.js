@@ -3,12 +3,19 @@ import { Outlet, Link, useNavigate } from 'react-router-dom'
 function Layout() {
 
     const isLoged = window.localStorage.getItem('isLoged')
-
+    const username=window.localStorage.getItem('username')
+    const id=window.localStorage.getItem('id')
+  
+   
+    const data={
+        isLoged:isLoged,
+        username:username,
+        id:id
+    }
+     console.log(data)
     const navigate = useNavigate()
     const logOut = async () => {
-        console.log(isLoged)
         window.localStorage.setItem('isLoged', false)
-        console.log(isLoged)
         navigate('/signIn')
     }
     if (isLoged) {
@@ -19,7 +26,7 @@ function Layout() {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
 
-                                {isLoged != 'true' && (<>
+                                {isLoged !== 'true' && (<>
                                     <li className="nav-item">
                                         <Link to='/signIn' className='nav-link active'>Signin</Link>
                                     </li>

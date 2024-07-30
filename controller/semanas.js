@@ -3,12 +3,13 @@ const controller = {}
 
 //all data collection Semana
 controller.allDataSemanas = async (req, res) => {
-    
+    //{ userId: req.user._id }
     try {
-        const datos = await schemaSemanas.find({ userId: req.user._id })
-        const user = req.user
-        res.render('allSemanas', { datos, user });
-        //res.send(datos)
+        const datos = await schemaSemanas.find()
+        const user = req.data
+        console.log(req.data)
+        //res.render('allSemanas', { datos, user });
+        res.send(datos)
     }
     catch (err) {
         console.log(err);

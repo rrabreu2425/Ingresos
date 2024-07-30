@@ -7,14 +7,14 @@ const app = express();
 
 app.use('/api/ingresos/semanas', routerSemanas);
 
- routerSemanas.use((req, res, next)=>{
-    if(req.isAuthenticated()){
-       return next()
-    }else{
-        res.render('login', {user: req.user})
-    }        
+ //routerSemanas.use((req, res, next)=>{
+    //if(req.isAuthenticated()){
+       //return next()
+    //}else{
+        //res.render('login', {user: req.user})
+   // }        
     
-})
+//})
 
 routerSemanas.get('/all', controller.allDataSemanas)
 routerSemanas.get('/addSemana', controller.addSemanaGet)
