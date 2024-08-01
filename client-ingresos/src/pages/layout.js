@@ -7,12 +7,7 @@ function Layout() {
     const id=window.localStorage.getItem('id')
   
    
-    const data={
-        isLoged:isLoged,
-        username:username,
-        id:id
-    }
-     console.log(data)
+
     const navigate = useNavigate()
     const logOut = async () => {
         window.localStorage.setItem('isLoged', false)

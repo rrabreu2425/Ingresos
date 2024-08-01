@@ -17,6 +17,7 @@ userRouter.get('/signup', controller.getLogin)
 userRouter.get('/sendUser', controller.sendUserApi)
 userRouter.post('/login',controller.postLogin, (req, res)=>{
     const user= req.user
+    console.log(user)
     res.send(user)    
 })
 userRouter.post('/signup',controller.postSignUp, (req, res)=>{
