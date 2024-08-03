@@ -17,7 +17,7 @@ app.use('/api/ingresos/semanas', routerSemanas);
 //})
 
 routerSemanas.get('/all', controller.allDataSemanas)
-routerSemanas.post('/all', controller.allDataSemanasPost)
+routerSemanas.post('/all', controller.allDataSemanas)
 routerSemanas.get('/addSemana', controller.addSemanaGet)
 routerSemanas.get('/delete',controller.deleteSemanaGet)
 routerSemanas.get('/descuento',controller.descuentoGet)

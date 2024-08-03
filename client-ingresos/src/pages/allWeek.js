@@ -1,36 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import '../css/style.css'
-import axios from "axios";
-import allWeeks from "../api/semana";
 
 
 
- function AllWeek(){
 
-  const[res, setRes]=useState()
+ function AllWeek({weeks}){
+console.log(weeks)
 
-  const isLoged = window.localStorage.getItem('isLoged')
-const username=window.localStorage.getItem('username')
-const id=window.localStorage.getItem('id')
-
-const data={
-    isLoged:isLoged,
-    username:username,
-    id:id
-}
-
- async function allWeeks(data) {
-   await axios
-        .post('http://localhost:8081/api/ingresos/semanas/all', data)
-        .then((response) => {
-          //setRes(response.data)
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-}
-
-  console.log(res)
     return(
         <div className='table'>
         <table className="table table-dark table-striped">

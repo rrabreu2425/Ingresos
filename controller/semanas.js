@@ -5,30 +5,14 @@ const controller = {}
 controller.allDataSemanas = async (req, res) => {
     //{ userId: req.user._id }
     try {
-        const datos = await schemaSemanas.find({ userId: req.body.id })
-        
-        console.log(datos)
-        //res.render('allSemanas', { datos, user });
-        res.send(datos[0])
-    }
-    catch (err) {
-        console.log(err);
-    }
-}
-//all semana post
-controller.allDataSemanasPost = async (req, res) => {
-    //{ userId: req.user._id }
-    try {
-        const datos = await schemaSemanas.find({ userId: req.body.id })
-       
-        //res.render('allSemanas', { datos, user });
-        //console.log(datos)
+        const datos = await schemaSemanas.find({ userId: req.body.id })      
         res.send(datos)
     }
     catch (err) {
         console.log(err);
     }
 }
+
 //
 controller.getHome = (req, res) => {
      return res.render('index', { user: req.user })
