@@ -35,7 +35,10 @@ function Layout() {
                                         <Link to='/home' className='nav-link active'>Home</Link>
                                     </li>
                                     <li className="nav-item">
-                                        <Link to='/allIngresos' className='nav-link active'>Mostrar Todos Ingresos</Link>
+                                        <Link to='/allIngresosDT' className='nav-link active'>Mostrar Todos Ingresos Data Table</Link>
+                                    </li>
+                                    <li className="nav-item">
+                                        <Link to='/allIngresosT' className='nav-link active'>Mostrar Todos Ingresos Simple Table</Link>
                                     </li>
                                     <li className="nav-item">
                                         <Link to='/addIngresos' className='nav-link active'>Adicionar Ingreso</Link>

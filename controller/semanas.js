@@ -49,19 +49,25 @@ controller.descuentoGet = async (req, res) => {
 // add new semana ingresos
 controller.newSemana = async (req, res) => {
     try {
-       
         if (req.body.monto!=='' && req.body.fechaInicioSemana!=='' &&req.body.fechaFinalSemana!=='' && req.body.cantHorasTrabajadas!==''){
                 const newWeek = new schemaSemanas({
                 monto: req.body.monto,
-                fechaInicioSemana: req.body.fechaFinalSemana,
+                fechaInicioSemana: req.body.fechaInicioSemana,
                 fechaFinalSemana: req.body.fechaFinalSemana,
                 cantHorasTrabajadas: req.body.cantHorasTrabajadas,
-                userId: req.user._id
+                userId: req.body.userID
             })
-            await schemaSemanas.create(newWeek);
-            const datos = await schemaSemanas.find({ userId: req.user._id })
-            const user = req.user
-            res.render('allSemanas', { datos, user })
+            const result=await schemaSemanas.create(newWeek);
+            if(result){
+                //const datos = await schemaSemanas.find({ userId: req.body.userID })
+                res.send(true)
+            }
+            else{
+                res.send(false)
+            }
+            //const datos = await schemaSemanas.find({ userId: req.user._id })
+           // const user = req.user
+            //res.render('allSemanas', { datos, user })
 
         }
         else{
@@ -98,16 +104,17 @@ controller.descuento = async (req, res) => {
 //delete Elemento
 controller.deleteSemana = async (req, res) => {
     try {
-        const fechas = req.body
-        const objectFechaInicio = new Date(fechas.FechaInicioSemana)
-        const objectFechaFinal = new Date(fechas.FechaFinalSemana)
-        await schemaSemanas.deleteOne({
+        
+        const week = req.body
+        const objectFechaInicio = new Date(week.fechaInicioSemana)
+        const objectFechaFinal = new Date(week.fechaFinalSemana)
+        const result=await schemaSemanas.deleteOne({
             fechaInicioSemana: objectFechaInicio,
             fechaFinalSemana: objectFechaFinal,
-            userId: req.user._id
+            userId: week.userId
         })
-        const datos = await schemaSemanas.find({ userId: req.user._id })
-        console.log('prueba')
+        const datos = await schemaSemanas.find({ userId: week.userId })
+        res.send(datos)
         res.render('allSemanas', { user: req.user, datos })
     }
     catch (err) {
